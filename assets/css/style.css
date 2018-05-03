@@ -7,16 +7,49 @@ body{
     -o-background-size: cover;
 }
 
-
 .main{
     width: 960px;
-    height: 475px;
+    height: 600px;
     text-align: center;
-    border: 5px solid black;
+    /* border: 5px solid black; */
     /* background: white; */
 }
-
+h1{
+    color: white;
+    font-size: 75px;
+}
 #startBtn{
     height: 100px;
     width: 175px;
+}
+
+#question,
+#timer,
+#possibles{
+    color:white;
+    font-size: 50px;
+}
+
+#question,
+#timer{
+    background: black;
+}
+
+/* #timer{
+    border: 2px solid black;
+} */
+#answerBtn{
+    background-color: Transparent;
+    background-repeat:no-repeat;
+    border: none;
+    cursor:pointer;
+    overflow: hidden;  
+    font-size: 30px;
+    height: 100px;
+    width: 50%;
+    color:white;
+}
+#answerBtn:hover {
+    background: black;
+    border: 2px solid black;
 }
