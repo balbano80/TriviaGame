@@ -1,12 +1,18 @@
-correct = 0;
-wrong = 0;
-unanswered = 0;
-counter = 0;
+$(function() {
+    
+var correct = 0;
+var wrong = 0;
+var unanswered = 0;
+var counter = 0;
+var timer;
+var arrIter = 0;
+var startBtn = true;
+var tempBtn;
 
 var questionArr = [
     questionOne = {
         question: "What is Planet Spaceball running out of?",
-        possibles: ["Water", "Food", "Oil", "Water"],
+        possibles: ["Water", "Food", "Oil", "Air"],
         correct: 3
     },
     questionTwo = {
@@ -90,8 +96,48 @@ var questionArr = [
         correct: 3
     }
 ];
-$(document).ready(function() {
+
+function answers(arr){
+    for (var i = 0; i < arr.length; i++){
+        tempBtn = $("<button>");
+        tempBtn.attr('class', 'center-block');
+        tempBtn.attr('id', 'answerBtn');
+        tempBtn.text(arr[i]);
+        $("#possibles").append(tempBtn);
+    }
+}
+
+function newQuestion(){
+    if(startBtn){
+        $("#startBtn").addClass("invisible");
+        startBtn = false;
+    }
+    $("timer").empty();
+    $("#possibles").empty();
+    $("question").empty();
+    $("#timer").html("Time remaining: " + timer) + " seconds";
+    $("#question").html(questionArr[arrIter].question);
+    answers(questionArr[arrIter].possibles);
+    arrIter++;
+}
+
+function reset(){
+    var correct = 0;
+    var wrong = 0;
+    var unanswered = 0;
+    var counter = 0;
+    var timer = 0;
+    var arrIter = 0;
+    var startBtn = true;
+}
 
 
 
+    $(document).on("click", "#answerBtn", function(){
+        newQuestion();
+    })
+
+    $(document).on("click", "#startBtn", function(){
+        newQuestion();
+    });
 });

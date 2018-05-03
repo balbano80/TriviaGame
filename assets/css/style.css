@@ -7,12 +7,16 @@ body{
     -o-background-size: cover;
 }
 
-.header{
-}
+
 .main{
     width: 960px;
-    height: 675px;
+    height: 475px;
     text-align: center;
     border: 5px solid black;
-    background: white;
+    /* background: white; */
+}
+
+#startBtn{
+    height: 100px;
+    width: 175px;
 }
