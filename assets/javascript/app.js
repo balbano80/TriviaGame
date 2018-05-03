@@ -1,5 +1,5 @@
 $(function() {
-    
+
 var correct = 0;
 var wrong = 0;
 var unanswered = 0;
@@ -9,7 +9,7 @@ var arrIter = 0;
 var startBtn = true;
 var tempBtn;
 var clockRunning = false;
-
+var timeDown;
 
 var questionArr = [
     questionOne = {
@@ -122,7 +122,6 @@ function answers(arr){
         tempDiv.attr("class", "row");
         tempDiv.attr("class", "center-block");
         tempBtn = $("<button>");
-        // tempBtn.attr("class", "center-block");
         tempBtn.attr("id", "answerBtn");
         tempBtn.attr("data-index", i);
         tempBtn.text(arr[i]);
@@ -133,8 +132,10 @@ function answers(arr){
 
 function newQuestion(){
     if(startBtn){
-        $("#startBtn").addClass("invisible");
-        startBtn = false;
+        $("#start").hide();
+        // $("#startBtn").style.display = "none";
+        // $("#startBtn").addClass("invisible");
+        startBtn = false;  
     }
     $("timer").empty();
     $("#possibles").empty();
@@ -144,25 +145,24 @@ function newQuestion(){
     answers(questionArr[arrIter].possibles);
     timer = 30;
     decrement();
-    // arrIter++;
 }
 
 function decrement(){
-    if(!clockRunning){
-        var timeDown = setInterval(function(){
+     if(!clockRunning){
+        timeDown = setInterval(function(){
             clockRunning = true;
             timer--;
             $("#timer").html("Time remaining: " + timer + " seconds");
             if($("#answerBtn").data('clicked')){
                 clearInterval(timeDown);
-                clockRunning = false;
-                timer = 15;
+                clockRunning = true;
             }
             if(timer == 0){
                 clearInterval(timeDown);
-                clockRunning = false;
+                clockRunning = true;
                 // timer = 0;
                 expired();
+                unanswered++;
                 setTimeout(function(){
                     newQuestion()
                     arrIter++;
@@ -174,36 +174,50 @@ function decrement(){
 
 function answerCheck(index){
     if(index == questionArr[arrIter].correct){
-        console.log("In correct answer block");
+        correct++;
         rightAnswer();
-        setTimeout(function(){
-            console.log("in setTimeout block");
-            newQuestion()
-         }, 6000);
+        if(arrIter ===questionArr.length - 1){
+            gameOver();
+        }
+        else{
+            setTimeout(function(){
+                newQuestion()
+            }, 6000);
+        }
     }
     else{
+        wrong++;
         wrongAnswer();
-        setTimeout(function(){
-            console.log("in setTimeout block");
-            newQuestion()
-         }, 6000);
+        if(arrIter ===questionArr.length - 1){
+            gameOver();
+        }
+        else{
+            setTimeout(function(){
+                newQuestion()
+            }, 6000);
+        }
     }
-    arrIter++;
+    if(arrIter ===questionArr.length - 1){
+        console.log("In game over block");
+        gameOver();
+    }
+    else{
+        arrIter++;
+    }
 }
 
-function rightAnswer(){  
-    console.log("in right answer block");
+function rightAnswer(){
+    stopInterval();
     var answerDiv = $("<div>");
     answerDiv.attr("id", "correct");
     answerDiv.html(questionArr[arrIter].image);
     $("#question").text("Correct!!!")
     $("#possibles").html(answerDiv);
     document.querySelector("#music").innerHTML = "<audio autoplay><source src='assets/audio/goodumb.mp3' type='audio/mpeg'> </audio>"
-    correct++;
 }
 
 function wrongAnswer(){
-    console.log("in wrong answer block");
+    stopInterval();
     var answerDiv = $("<div>");
     answerDiv.attr("id", "incorrect");
     answerDiv.text("The Correct Answer was: ");
@@ -212,7 +226,6 @@ function wrongAnswer(){
     $("#question").text(wrongReply);
     $("#possibles").html(answerDiv);
     document.querySelector("#music").innerHTML = "<audio autoplay><source src='assets/audio/fooledyou.wav' type='audio/wav'> </audio>"
-    wrong++;
 }
 
 function expired(){
@@ -222,40 +235,91 @@ function expired(){
     answerDiv.html(questionArr[arrIter].image);
     $("#question").text("You ran out of Time")
     $("#possibles").html(answerDiv);
-    unanswered++;
+}
+function gameOver(){
+    $("#timer").empty();
+    $("#possibles").empty();
+    $("question").empty();
+    $("#question").text("Game Over")
+    var correcstDiv = $("<div>");
+    var wrongsDiv = $("<div>");
+    var unansweredDiv = $("<div>");
+    correcstDiv.text("Corrrect answers: " + correct);
+    wrongsDiv.text("Wrong answers: " + wrong);
+    unansweredDiv.text("Unanswered: " + unanswered);
+    $("#possibles").append(correcstDiv);
+    $("#possibles").append(wrongsDiv);
+    $("#possibles").append(unansweredDiv);
+    var playAgain = $("<button>");
+    playAgain.attr("id", "again");
+    playAgain.text("Play Again?");
+    $("#possibles").append(playAgain);
 }
 
-// function reset(){
-//     var correct = 0;
-//     var wrong = 0;
-//     var unanswered = 0;
-//     var counter = 0;
-//     var timer = 0;
-//     var arrIter = 0;
-//     var startBtn = true;
-// }
+function stopInterval(){
+    console.log("in stop interval function");
+    clearInterval(timeDown);
+    clockRunning = false;;
+}
 
+function reset(){
+    console.log("in reset block");
+    correct = 0;
+    wrong = 0;
+    unanswered = 0;
+    counter = 0;
+    timer = 30;
+    arrIter = 0;
+    startBtn = true;
+    $("#timer").empty();
+    $("#possibles").empty();
+    $("#question").empty();
+    // $("#startBtn").removeClass("invisible");
+    $("#start").show();
+}
 
-    $(document).on("click", "#answerBtn", function(){
-        // newQuestion();
-        answerCheck($(this).attr("data-index"));   
-    })
 
     $(document).on("click", "#startBtn", function(){
         newQuestion();
     });
+    $(document).on("click", "#answerBtn", function(){
+        // newQuestion();
+        answerCheck($(this).attr("data-index"));   
+    })
+    $(document).on("click", "#again", function(){
+        console.log("in play again button hit block")
+        reset();
+    });
+    $("#start").show();
 });
 
-//Mostly working version
+//Function flow:
+    // on start button click
+    // new question
+        // answers
+        // decrement/timer
+    //no click
+        //expired(image/gif)
+        //after interval
+            //new question
+    //on answer button click
+        // checkanswer
+            //right answer(image/gifs)
+            // or
+            //wrong answer(image/gifs)
 
+            // after interval
+                //new question
 //TODO:
-    //maybe make timer stop when an answer was selected/gif is playing
+    //make timer stop when an answer was selected/gif is playing
+    //stop timer actions when game is over
+    //set standard sie of images/gifs
     //end of game display screen:
-        //1. Notification game is over
-        //2. stats(# of correct, incorrect and unanswered)
         //3. Play again button
-    //reset game(without reloading page)
+            //reset game(without reloading page)
 
     //styles
         //1. better fonts
         //2. get opinions on fonts, text colors, on hover backgrounds, etc...
+
+
