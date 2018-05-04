@@ -1,21 +1,37 @@
 
-
+/*
+====================
+Layout
+====================
+*/
 body{
     background: url(../images/background.jpg) no-repeat center bottom fixed;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     background-size: cover;
     -o-background-size: cover;
-    font-family: 'Poller One', cursive;
+    font-family: 'Poller One', Arial, Helvetica, sans-serif;
+}
+
+.header{
+    background: transparent;
 }
 
 .main{
     width: 100%;
-    height: 650px;
+    height: 80%;
+    max-height: 90%;
     text-align: center;
+    padding-bottom: 10px;
     /* background: url(../images/headerBG.jpg); */
     background: url(../images/mainBg.jpg);
 }
+
+/*
+========================
+Typography
+========================
+*/
 h1{
     color: goldenrod;
     /* text-shadow: -1px 0 white, 0 1px white, 1px 0 white, 0 -1px white; */
@@ -23,14 +39,21 @@ h1{
 
     font-size: 70px;
 }
-#startBtn{
-    height: 100px;
-    width: 175px;
-}
 
+/*
+=========================
+Main content
+=========================
+*/
 #timer{
     font-size: 40px; 
     color: goldenrod;
+}
+
+#question{
+    font-size: 30px;
+    text-shadow: -1px 0 blue, 0 1px blue, 1px 0 blue, 0 -1px blue;
+    color: white;
 }
 
 #possibles{
@@ -38,9 +61,30 @@ h1{
     font-size: 35px;
 }
 
-#question{
+img{
+    width: 500x;
+    height: 390px;;
+} 
+
+/*
+==========================
+Buttons
+==========================
+*/
+#startBtn,
+#again{
+    height: 100px;
+    width: 175px;
+    background: white;
     font-size: 30px;
-    text-shadow: -1px 0 blue, 0 1px blue, 1px 0 blue, 0 -1px blue;
+}
+#startBtn:hover{
+    background: blue;
+    color: white;
+}
+
+#again:hover{
+    background: blue;
     color: white;
 }
 
@@ -62,15 +106,3 @@ h1{
     text-shadow: -1px 0 white, 0 1px white, 1px 0 white, 0 -1px white;
 }
 
-img{
-    width: 500x;
-    height: 390px;;
-} 
-.header{
-    background: transparent;
-
-}
-
-#again:hover{
-    background: goldenrod;
-}

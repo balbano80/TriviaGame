@@ -131,7 +131,7 @@ var questionArr = [
         image: "<img src='assets/images/spaceballs2.jpg' alt='spaceballs spaceballs2'>",
         audio: "assets/audio/theme.wav"
     }
-];
+];  //array of question objects with their question, corresponding possible answers to display, the index of the correct answer, and corresponding image/gif plus audio
 
 function answers(arr){
     for (var i = 0; i < arr.length; i++){
@@ -145,22 +145,26 @@ function answers(arr){
         $("#possibles").append(tempDiv);
         $(tempDiv).append(tempBtn);
     }
-}
+} //creates div and button for each of the possible answers in the corresponding objects "possible" array, and appends to div with #possilbes id
 
 function newQuestion(){
     if(startBtn){
         $("#start").hide();
         startBtn = false;  
-    }
-    $("timer").empty();
+    }//hides start button in case it is up
+    $("#timer").empty();
     $("#possibles").empty();
-    $("question").empty();
+    $("#question").empty();
+    timer = 30;    
     $("#timer").html("Time remaining: " + timer + " seconds");
     $("#question").html(questionArr[arrIter].question);
     answers(questionArr[arrIter].possibles);
-    timer = 30;
     decrement();
-}
+}   // empties the timer, question and possibles divs
+    // replaces timer div with max timer(30seconds)
+    // appends current iteration of question array question to the div with question id
+    // calls answers function
+    // calls decrement function
 
 function decrement(){
      if(!clockRunning){
@@ -175,17 +179,23 @@ function decrement(){
                 unanswered++;
                 if(arrIter ===questionArr.length - 1){
                     gameOver();
-                }
+                } // if last question goes unanswered, call gameOver function
                 else{
                 setTimeout(function(){
                     arrIter++;
                     newQuestion()
                  }, 6000);
-                }
+                } // else, increment iterator, call newQuestion function after 6 seconds
             }
         }, 1000)
-    }
-}
+    } // only go if clockRunning is set to false
+} // 1 second decrement and display timer function
+
+function stopInterval(){
+    // console.log("in stop interval function");
+    clearInterval(timeDown);
+    clockRunning = false;;
+} // stops timer and sets clockRunning to false
 
 function answerCheck(index){
     if(index == questionArr[arrIter].correct){
@@ -193,37 +203,37 @@ function answerCheck(index){
         rightAnswer();
         if(arrIter ===questionArr.length - 1){
             gameOver();
-        }
+        } // if on last question, call gameOver function
         else{
             setTimeout(function(){
                 newQuestion()
             }, 6000);
-        }
+        } // else call newQuestion function after 6 seconds
     }
     else{
         wrong++;
         wrongAnswer();
         if(arrIter ===questionArr.length - 1){
             gameOver();
-        }
+        } // if on last question, call gameOver function
         else{
             setTimeout(function(){
                 newQuestion()
             }, 6000);
-        }
+        } // else call newQuestion function after 6 seconds
     }
     if(arrIter ===questionArr.length - 1){
-        console.log("In game over block");
+        console.log("In game over block 2");
         gameOver();
-    }
+    } // actually not sure if this is needed anymore
     else{
         arrIter++;
-    }
+    } // increase question array iterator
 }
 
 function playAudio(){
     document.querySelector("#music").innerHTML = "<audio autoplay><source src=" + questionArr[arrIter].audio + " type='audio/wav'> </audio>"
-}
+} // plays corresponding audio value for each object
 
 function rightAnswer(){
     stopInterval();
@@ -233,7 +243,7 @@ function rightAnswer(){
     $("#question").text("Correct!!!")
     $("#possibles").html(answerDiv);
     playAudio()
-}
+} // calls stop timer function, notifyes user that they selected the correct and plays corresponding gif for current question object, and calls playAudio function
 
 function wrongAnswer(){
     stopInterval();
@@ -245,7 +255,7 @@ function wrongAnswer(){
     $("#question").text(wrongReply);
     $("#possibles").html(answerDiv);
     playAudio();
-}
+} // calls stop timer function, notifies user that wrong answer selected, displays correct answer and plays corresponding gif for current question object, and calls playAudio function
 
 function expired(){
     var answerDiv = $("<div>");
@@ -255,7 +265,8 @@ function expired(){
     var wrongReply = "You ran out of Time. The correct answer was: " + questionArr[arrIter].possibles[questionArr[arrIter].correct];
     $("#question").text(wrongReply);
     $("#possibles").html(answerDiv);
-}
+} // notifies user they ran out of time, displays correct answer, plays corresponding gif and audio for question object
+
 function gameOver(){
     $("#timer").empty();
     $("#possibles").empty();
@@ -274,13 +285,7 @@ function gameOver(){
     playAgain.attr("id", "again");
     playAgain.text("Play Again?");
     $("#possibles").append(playAgain);
-}
-
-function stopInterval(){
-    console.log("in stop interval function");
-    clearInterval(timeDown);
-    clockRunning = false;;
-}
+} // empties all necessary divs, displays game over message, displays correct, wrong and unanswered question totals, and creates/displays play again button
 
 function reset(){
     console.log("in reset block");
@@ -295,50 +300,43 @@ function reset(){
     $("#possibles").empty();
     $("#question").empty();
     $("#start").show();
-}
+} // sets all variables back to default, empties necessary divs and re-displays the start button(which starts the cycle again on-click)
 
-
-    $(document).on("click", "#startBtn", function(){
-        newQuestion();
-    });
-    $(document).on("click", "#answerBtn", function(){
-        // newQuestion();
-        answerCheck($(this).attr("data-index"));   
-    })
-    $(document).on("click", "#again", function(){
-        console.log("in play again button hit block")
-        reset();
-    });
-    // $("#start").show();
-});
-
-//Function flow:
+//Basic function flow:
     // on start button click
     // new question
         // answers
         // decrement/timer
     //no click
         //expired(image/gif)
+        //check end of question array
         //after interval
             //new question
+            //or game over
     //on answer button click
         // checkanswer
             //right answer(image/gifs)
             // or
             //wrong answer(image/gifs)
-
+            //check end of question array
             // after interval
                 //new question
-//TODO:
-    //make timer stop when an answer was selected/gif is playing
-    //stop timer actions when game is over
-    //set standard sie of images/gifs
-    //end of game display screen:
-        //3. Play again button
-            //reset game(without reloading page)
+                //or game over
 
-    //styles
-        //1. better fonts
-        //2. get opinions on fonts, text colors, on hover backgrounds, etc...
+
+    $(document).on("click", "#startBtn", function(){
+        newQuestion();
+    });
+    $(document).on("click", "#answerBtn", function(){
+        answerCheck($(this).attr("data-index"));   
+    })
+    $(document).on("click", "#again", function(){
+        // console.log("in play again button hit block")
+        reset();
+    });
+});
+
+
+
 
 
