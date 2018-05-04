@@ -178,7 +178,10 @@ function decrement(){
                 playAudio();
                 unanswered++;
                 if(arrIter ===questionArr.length - 1){
-                    gameOver();
+                    setTimeout(function(){
+                        arrIter++;
+                        gameOver();
+                     }, 6000);
                 } // if last question goes unanswered, call gameOver function
                 else{
                 setTimeout(function(){
@@ -202,7 +205,10 @@ function answerCheck(index){
         correct++;
         rightAnswer();
         if(arrIter ===questionArr.length - 1){
-            gameOver();
+            setTimeout(function(){
+                // console.log("in right game over");
+                gameOver();
+            }, 6000);
         } // if on last question, call gameOver function
         else{
             setTimeout(function(){
@@ -214,7 +220,11 @@ function answerCheck(index){
         wrong++;
         wrongAnswer();
         if(arrIter ===questionArr.length - 1){
-            gameOver();
+            // console.log("in wrong game over");
+            setTimeout(function(){
+                console.log("in right game over");
+                gameOver();
+            }, 6000);
         } // if on last question, call gameOver function
         else{
             setTimeout(function(){
@@ -222,14 +232,10 @@ function answerCheck(index){
             }, 6000);
         } // else call newQuestion function after 6 seconds
     }
-    if(arrIter ===questionArr.length - 1){
-        console.log("In game over block 2");
-        gameOver();
-    } // actually not sure if this is needed anymore
-    else{
-        arrIter++;
-    } // increase question array iterator
-}
+    arrIter++
+} // checks if index of button clicked is same as objects correct value.  Based on that it will run the right answer or incorrect answer functions.
+  // Also increases counter of both correct and wrong answers(depending on which it was).  Does a chech to see if at end of question array. If so, 
+  // will run the game over function.  Otherwise, runs a timeout function that will call the new question function after 6 seconds .
 
 function playAudio(){
     document.querySelector("#music").innerHTML = "<audio autoplay><source src=" + questionArr[arrIter].audio + " type='audio/wav'> </audio>"
@@ -272,6 +278,7 @@ function gameOver(){
     $("#possibles").empty();
     $("question").empty();
     $("#timer").text("Game Over")
+    $("#question").html(" ");
     var correcstDiv = $("<div>");
     var wrongsDiv = $("<div>");
     var unansweredDiv = $("<div>");

@@ -23,7 +23,6 @@ body{
     max-height: 90%;
     text-align: center;
     padding-bottom: 10px;
-    /* background: url(../images/headerBG.jpg); */
     background: url(../images/mainBg.jpg);
 }
 
@@ -61,7 +60,7 @@ Main content
     font-size: 35px;
 }
 
-img{
+#possibles img{
     width: 500x;
     height: 390px;;
 } 
