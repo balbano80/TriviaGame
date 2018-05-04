@@ -16,103 +16,120 @@ var questionArr = [
         question: "What is Planet Spaceball running out of?",
         possibles: ["Water", "Food", "Oil", "Air"],
         correct: 3,
-        image: "<img src='assets/images/air.jpg' alt='spaceballs air'>"
+        image: "<img src='assets/images/air.gif' alt='spaceballs air'>",
+        audio: "assets/audio/suckblow.wav"
     },
     questionTwo = {
         question: "What bumper sticker is on the back of Spaceball One?",
         possibles: ["Jesus Is Our Co-Pilot", "We Brake For Nobody", "I Love My Ewok", "My Other Car is the Millenium Falcon"],
         correct: 1,
-        image: "<img src='assets/images/sb1BumperSticker.jpg' alt='sb1 back'>" 
+        image: "<img src='assets/images/sb1BumperSticker.jpg' alt='sb1 back'>", 
+        audio: "assets/audio/spaceballOne.wav"
     },
     questionThree = {
         question: "What is the name of Rick Moranis's character?",
         possibles: ["Darth Helmet", "Dark Vader", "Dark Helmet", "Barf Vapor"],
         correct: 2,
-        image: "<img src='assets/images/darkHelmet.gif' alt='spaceballs dark helmet'>"
+        image: "<img src='assets/images/darkHelmet.gif' alt='spaceballs dark helmet'>",
+        audio: "assets/audio/goodumb.wav"
     },
     questionFour = {
         question: "Who is Dark Hemet's second in command?",
         possibles: ["Colonel Ronald McDonald", "Colonel Klink", "Colonel Sandurz", "Colonel Mustard"],
         correct: 2,
-        image: "<img src='assets/images/colonelSandurz.png' alt='colonel sandurz'>"
+        image: "<img src='assets/images/chicken.gif' alt='colonel sandurz'>",
+        audio: "assets/audio/chicken.wav"
     },
     questionFive = {
         question: "What type of spacecraft does Lone Starr pilot?",
         possibles: ["Ford Explorer", "Winnebago", "Corvette", "Astrovan"],
         correct: 1,
-        image: "<img src='assets/images/winnebago.jpg' alt='spaceballs winnebago'>"
+        image: "<img src='assets/images/winnebago.jpg' alt='spaceballs winnebago'>",
+        audio: "assets/audio/winnebago.wav"
     },
-    questionSix = {
-        question: "What is the name of the gangster looking for Lone Starr",
-        possibles: ["Pizza the Hutt", "Dom Ino", "Papa John", "Pepper Oni"],
-        correct: 0,
-        image: "<img src='assets/images/pizzaTheHutt.gif' alt='spaceballs pizza the hutt'>"
-    },
-    questionSeven= {
-        question: "What is the name of Princess Vespa's sleepy husband to be?",
-        possibles: ["Prince Valtrex", "Prince Prozac", "Prince Valium", "Prince Sleepinol"],
-        correct: 2,
-        image: "<img src='assets/images/princeValium.jpg' alt='spaceballs prince valium'>"
-    },
+    // questionSix = {
+    //     question: "What is the name of the gangster looking for Lone Starr",
+    //     possibles: ["Pizza the Hutt", "Dom Ino", "Papa John", "Pepper Oni"],
+    //     correct: 0,
+    //     image: "<img src='assets/images/pizzaTheHutt.gif' alt='spaceballs pizza the hutt'>",
+    //     audio: "assets/audio/stunt.wav"
+    // },
+    // questionSeven= {
+    //     question: "What is the name of Princess Vespa's sleepy husband to be?",
+    //     possibles: ["Prince Valtrex", "Prince Prozac", "Prince Valium", "Prince Sleepinol"],
+    //     correct: 2,
+    //     image: "<img src='assets/images/princeValium.jpg' alt='spaceballs prince valium'>",
+    //     audio: "assets/audio/mechanism.wav"
+    // },
     questionEight = {
         question: "What type of jam is used to 'jam' the Spaceball's radar?",
         possibles: ["Grape", "Strawberry", "Raspberry", "Apricot"],
         correct: 2,
-        image: "<img src='assets/images/raspberry.jpg' alt='spaceballs raspberry'>"
+        image: "<img src='assets/images/raspberry.gif' alt='spaceballs raspberry'>",
+        audio: "assets/audio/buckle.wav"
     },
-    questionEight = {
+    questionNine = {
         question: "Barf is a Mawg.  What is a Mawg?",
         possibles: ["Half Man and Half Hog", "Half Man and Half Dog", "Half Man and Half Wookie", "Half Man and Half Woman"],
         correct: 1,
-        image: "<img src='assets/images/mawg.gif' alt='spaceballs mawg'>"
+        image: "<img src='assets/images/mawg.gif' alt='spaceballs mawg'>",
+        audio: "assets/audio/mawg.wav"
     },
-    questionEight = {
+    questionTen = {
         question: "What speed does Spaceball One go to in order to follow Lone Starr's ship?",
         possibles: ["Warp Speed", "Ludicrous Speed", "Ridicuolos Speed", "Light Speed"],
         correct: 1,
-        image: "<img src='assets/images/ludicrousSpeed.gif' alt='spaceballs ludicrous speed'>"
+        image: "<img src='assets/images/ludicrousSpeed.gif' alt='spaceballs ludicrous speed'>",
+        audio: "assets/audio/speed.wav"
     },
-    questionNine = {
+    questionEleven = {
         question: "What do the Spaceballs use to find out where Lone Starr escaped to?",
         possibles: ["Mr. Coffee", "Mr. Video and a copy of Spaceballs the Movie", "Mr. Radar", "Mr. Tractor Beam"],
         correct: 1,
-        image: "<img src='assets/images/mrVideo.gif' alt='spaceballs mr video'>"
+        image: "<img src='assets/images/mrVideo.gif' alt='spaceballs mr video'>",
+        audio: "assets/audio/apes.wav"
     },
-    questionTen = {
+    questionTwelve = {
         question: "When President Skroob uses the transporter, what accident happens to him?",
         possibles: ["He has no hair", "He is missing his arms", "His head is on backwards", "He is missing his legs"],
         correct: 2,
-        image: "<img src='assets/images/backwardsHead.gif' alt='spaceballs head on backwards'>"
+        image: "<img src='assets/images/backwardsHead.gif' alt='spaceballs head on backwards'>",
+        audio: "assets/audio/bigass.wav"
     },
-    questionEleven = {
+    questionThirteen = {
         question: "What thing in her matching luggage does Princess Vespa say she can't live without?",
         possibles: ["Her makeup", "Her clothes", "Her shoes" , "Her industrial stength hair dryer"],
         correct: 3,
-        image: "<img src='assets/images/hairDryer.gif' alt='spaceballs hair dryer'>"
+        image: "<img src='assets/images/hairDryer.gif' alt='spaceballs hair dryer'>",
+        audio: "assets/audio/fooledyou.wav"
     },
-    questionTwelve = {
+    questionFourteen = {
         question: "Who saves them on the desert planet?",
         possibles: ["Yogurt", "Pizza the Hutt", "Yoda", "Soda"],
         correct: 0,
-        image: "<img src='assets/images/yogurt.gif' alt='spaceballs yogurt'>"
+        image: "<img src='assets/images/yogurt.gif' alt='spaceballs yogurt'>",
+        audio: "assets/audio/yogurt.wav"
     },
-    questionThirteen = {
+    questionFifteen = {
         question: "What is Yogurt the master of?",
         possibles: ["Tthe Bleeps", "The Force", "The Schwartz", "The Vulcan Neck Pench"],
         correct: 2,
-        image: "<img src='assets/images/schwartz.gif' alt='spaceballs schwartz'>"
+        image: "<img src='assets/images/schwartz.gif' alt='spaceballs schwartz'>",
+        audio: "assets/audio/shwartz.wav"
     },
-    questionFourteen = {
+    questionSixteen= {
         question: "What is the combination to the air lock over Druidia?",
         possibles: ["1-1-1-1-1", "9-8-7-6-5", "1-2-3-4-5", "5-4-3-2-1"],
         correct: 2,
-        image: "<img src='assets/images/combination.gif' alt='spaceballs air shield combination'>"
+        image: "<img src='assets/images/combination.gif' alt='spaceballs air shield combination'>",
+        audio: "assets/audio/12345.wav"
     },
-    questionFifteen = {
+    questionSeventeen= {
         question: "What does Yogurt say is going to be the name of the sequel for Spaceballs the Movie?",
         possibles: ["The search for Pizza the Hutt", "The Search for the Schwartz", "The Spaceballs Strike Back", "The Search for More Money"],
         correct: 3,
-        image: "<img src='assets/images/spaceballs2.jpg' alt='spaceballs spaceballs2'>"
+        image: "<img src='assets/images/spaceballs2.jpg' alt='spaceballs spaceballs2'>",
+        audio: "assets/audio/theme.wav"
     }
 ];
 
@@ -133,8 +150,6 @@ function answers(arr){
 function newQuestion(){
     if(startBtn){
         $("#start").hide();
-        // $("#startBtn").style.display = "none";
-        // $("#startBtn").addClass("invisible");
         startBtn = false;  
     }
     $("timer").empty();
@@ -153,20 +168,20 @@ function decrement(){
             clockRunning = true;
             timer--;
             $("#timer").html("Time remaining: " + timer + " seconds");
-            if($("#answerBtn").data('clicked')){
-                clearInterval(timeDown);
-                clockRunning = true;
-            }
             if(timer == 0){
-                clearInterval(timeDown);
-                clockRunning = true;
-                // timer = 0;
+                stopInterval()
                 expired();
+                playAudio();
                 unanswered++;
+                if(arrIter ===questionArr.length - 1){
+                    gameOver();
+                }
+                else{
                 setTimeout(function(){
-                    newQuestion()
                     arrIter++;
+                    newQuestion()
                  }, 6000);
+                }
             }
         }, 1000)
     }
@@ -206,6 +221,10 @@ function answerCheck(index){
     }
 }
 
+function playAudio(){
+    document.querySelector("#music").innerHTML = "<audio autoplay><source src=" + questionArr[arrIter].audio + " type='audio/wav'> </audio>"
+}
+
 function rightAnswer(){
     stopInterval();
     var answerDiv = $("<div>");
@@ -213,7 +232,7 @@ function rightAnswer(){
     answerDiv.html(questionArr[arrIter].image);
     $("#question").text("Correct!!!")
     $("#possibles").html(answerDiv);
-    document.querySelector("#music").innerHTML = "<audio autoplay><source src='assets/audio/goodumb.mp3' type='audio/mpeg'> </audio>"
+    playAudio()
 }
 
 function wrongAnswer(){
@@ -225,26 +244,27 @@ function wrongAnswer(){
     var wrongReply = "Wrong.  The correct answer was: " + questionArr[arrIter].possibles[questionArr[arrIter].correct];
     $("#question").text(wrongReply);
     $("#possibles").html(answerDiv);
-    document.querySelector("#music").innerHTML = "<audio autoplay><source src='assets/audio/fooledyou.wav' type='audio/wav'> </audio>"
+    playAudio();
 }
 
 function expired(){
     var answerDiv = $("<div>");
     answerDiv.attr("id", "expired");
-    answerDiv.text("The Correct Answer was: ");
+    answerDiv.text("You ran out of Time");
     answerDiv.html(questionArr[arrIter].image);
-    $("#question").text("You ran out of Time")
+    var wrongReply = "You ran out of Time. The correct answer was: " + questionArr[arrIter].possibles[questionArr[arrIter].correct];
+    $("#question").text(wrongReply);
     $("#possibles").html(answerDiv);
 }
 function gameOver(){
     $("#timer").empty();
     $("#possibles").empty();
     $("question").empty();
-    $("#question").text("Game Over")
+    $("#timer").text("Game Over")
     var correcstDiv = $("<div>");
     var wrongsDiv = $("<div>");
     var unansweredDiv = $("<div>");
-    correcstDiv.text("Corrrect answers: " + correct);
+    correcstDiv.text("Correct answers: " + correct);
     wrongsDiv.text("Wrong answers: " + wrong);
     unansweredDiv.text("Unanswered: " + unanswered);
     $("#possibles").append(correcstDiv);
@@ -274,7 +294,6 @@ function reset(){
     $("#timer").empty();
     $("#possibles").empty();
     $("#question").empty();
-    // $("#startBtn").removeClass("invisible");
     $("#start").show();
 }
 
@@ -290,7 +309,7 @@ function reset(){
         console.log("in play again button hit block")
         reset();
     });
-    $("#start").show();
+    // $("#start").show();
 });
 
 //Function flow:

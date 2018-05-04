@@ -5,10 +5,16 @@
   <meta "viewport" content="width=decive-width, initial-scale=1">
   <title>Spaceballs The Trivia Game</title>
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
+  <link href="https://fonts.googleapis.com/css?family=Poller+One" rel="stylesheet">
   <link rel="stylesheet" type="text/css" href="assets/css/style.css">
 </head>
 <body>
     <div class="container">
+        <!-- <div class="row">
+            <div class="col-md-12 text-center header">
+                <h1>Trivia Game!!!</h1>
+            </div>
+        </div> -->
         <div class="main">
             <div class="row">
                 <div class="col-md-12 text-center header">
@@ -19,8 +25,13 @@
                 <div class="col-md-12" id="timer">
                 </div>
             </div>
-            <div class=" row center-block" id="start">
-                <button class="center-block" id="startBtn">Start</button>
+            <div class=" row" id="start">
+                <div class="col-md-12" id="start">
+                    <button class="center-block" id="startBtn">Start</button>
+                    <audio autoplay id="music">
+                        <source src="assets/audio/know.wav" type="audio/wav">
+                    </audio>
+                </div>
             </div>
             <div class="row">
                 <div class="col-md-12" id="question">
@@ -30,9 +41,6 @@
                 <div class="col-md-12" id="possibles">
                 </div>
             </div>
-            <audio autoplay id="music">
-                <source src="assets/audio/know.wav" type="audio/wav">
-            </audio>
         </div>
     </div>
 
